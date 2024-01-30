@@ -83,14 +83,11 @@ class FlutterSide extends StatelessWidget {
 }
 
 class KotlinSide extends StatelessWidget {
-  const KotlinSide({super.key});
+  const KotlinSide({Key? key});
 
   @override
   Widget build(BuildContext context) {
-    // This is used in the platform side to register the view.
     const String viewType = '<platform-view-type>';
-    // Pass parameters to the platform side.
-    const Map<String, dynamic> creationParams = <String, dynamic>{};
 
     return Container(
       height: 50.0,
@@ -111,7 +108,8 @@ class KotlinSide extends StatelessWidget {
             id: params.id,
             viewType: viewType,
             layoutDirection: TextDirection.ltr,
-            creationParams: creationParams,
+            creationParams: const <String,
+                dynamic>{}, // Nenhum parâmetro específico é passado
             creationParamsCodec: const StandardMessageCodec(),
             onFocus: () {
               params.onFocusChanged(true);
